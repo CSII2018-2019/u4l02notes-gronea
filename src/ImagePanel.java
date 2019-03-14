@@ -1,21 +1,27 @@
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
 import javax.imageio.ImageIO;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ImagePanel extends JPanel {
 	
-	//what variables are needed?
+	private int width;
+	private int height;
 	
 	BufferedImage image = null;
 	
-	public ImagePanel(){
-		//add code here
+	public ImagePanel(String fn){
+		image = readImageFile(this, fn);
+		width = image.getWidth();
+		height = image.getHeight();
 	}
 	
 	public static BufferedImage readImageFile(Object requestor, String fileName){
@@ -28,6 +34,18 @@ public class ImagePanel extends JPanel {
 			JOptionPane.showMessageDialog(null, message);
 		}
 		return image;
+	}
+	
+	
+	public void paintComponent(Graphics g) {
+		g.drawImage(image, 0, 0, null);
+		g.setColor(Color.YELLOW);
+		g.drawString("When you don't like pictures but your friend forces you take a picture", 50, 50);
+	}
+	
+	public Dimension getPreferredSize() {
+		Dimension size = new Dimension (width, height);
+		return size;
 	}
 
 }

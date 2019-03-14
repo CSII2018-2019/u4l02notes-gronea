@@ -11,7 +11,7 @@ import javax.swing.UIManager;
 
 public class U4L02Notes extends JFrame {
 	
-	public static final String FILE_NAME = "/zoe.jpg";
+	public static final String FILE_NAME = "/ImagesofImages.jpg";
 	
 	public U4L02Notes(){
 		initGUI();
@@ -31,7 +31,10 @@ public class U4L02Notes extends JFrame {
 		titleLabel.setForeground(Color.WHITE);
 		titlePanel.add(titleLabel);
 		add(titlePanel, BorderLayout.PAGE_START);
-
+		
+		//image panel
+		ImagePanel imgPanel = new ImagePanel(FILE_NAME);
+		add(imgPanel, BorderLayout.CENTER);
 
 	}
 	
@@ -52,3 +55,4 @@ public class U4L02Notes extends JFrame {
 	}
 
 }
+
