@@ -124,6 +124,81 @@ public class ImagePanel extends JPanel {
 		}
 	}
 	
+	public void convertToRedscle() {
+		for (int i = height; i > 0; i--) {
+			for (int x = 0; x < width; x++) {
+				for (int y = 0; y < height; y++) {
+					//get value for 1 pixel
+					int p = image.getRGB(x, y);
+					
+					int a = (p>>24) & 0xff;
+					int r = (p>>16) & 0xff;
+					int g = (p>>8) & 0xff;
+					int b = (p>>0) & 0xff;
+					
+					//calculate average
+					int newR = r;
+					int newG = 0;
+					int newB = 0;
+					
+					//reset our pixel
+					p = (a<<24) | (newR<<16) | (newG<<8) | (newB<<0);
+					image.setRGB(x, y, p);
+				}
+			}
+		}
+	}
+	
+	public void convertToGreenscle() {
+		for (int i = height; i > 0; i--) {
+			for (int x = 0; x < width; x++) {
+				for (int y = 0; y < height; y++) {
+					//get value for 1 pixel
+					int p = image.getRGB(x, y);
+					
+					int a = (p>>24) & 0xff;
+					int r = (p>>16) & 0xff;
+					int g = (p>>8) & 0xff;
+					int b = (p>>0) & 0xff;
+					
+					//calculate average
+					int newR = 0;
+					int newG = g;
+					int newB = 0;
+					
+					//reset our pixel
+					p = (a<<24) | (newR<<16) | (newG<<8) | (newB<<0);
+					image.setRGB(x, y, p);
+				}
+			}
+		}
+	}
+	
+	public void convertToBluescle() {
+		for (int i = height; i > 0; i--) {
+			for (int x = 0; x < width; x++) {
+				for (int y = 0; y < height; y++) {
+					//get value for 1 pixel
+					int p = image.getRGB(x, y);
+					
+					int a = (p>>24) & 0xff;
+					int r = (p>>16) & 0xff;
+					int g = (p>>8) & 0xff;
+					int b = (p>>0) & 0xff;
+					
+					//calculate average
+					int newR = 0;
+					int newG = 0;
+					int newB = b;
+					
+					//reset our pixel
+					p = (a<<24) | (newR<<16) | (newG<<8) | (newB<<0);
+					image.setRGB(x, y, p);
+				}
+			}
+		}
+	}
+	
 	//When converting to color scales 0 out the other colors (Ex. [r=0, g=0, p&0xff] = blue scale)
 	
 	public void convertToPurplescle() {
