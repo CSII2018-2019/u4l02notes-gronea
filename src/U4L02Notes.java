@@ -35,6 +35,22 @@ public class U4L02Notes extends JFrame {
 		//image panel
 		ImagePanel imgPanel = new ImagePanel(FILE_NAME);
 		add(imgPanel, BorderLayout.CENTER);
+		
+		//grayscale image panel
+		ImagePanel grayImgPanel = new ImagePanel(FILE_NAME);
+		//grayImgPanel.convertToGrayscle();
+		grayImgPanel.convertToSepia();
+		add(grayImgPanel, BorderLayout.LINE_END);
+		
+		//negscale image panel
+		ImagePanel negImgPanel = new ImagePanel(FILE_NAME);
+		negImgPanel.convertToNegscle();
+		add(negImgPanel, BorderLayout.LINE_END);
+				
+		//purplescale image panel
+		ImagePanel purpleImgPanel = new ImagePanel(FILE_NAME);
+		purpleImgPanel.convertToPurplescle();
+		add(purpleImgPanel, BorderLayout.LINE_END);
 
 	}
 	
