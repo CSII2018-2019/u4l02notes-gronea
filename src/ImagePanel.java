@@ -40,7 +40,6 @@ public class ImagePanel extends JPanel {
 
 	}
 	
-	
 	public void paintComponent(Graphics g) {
 		/*g.drawImage(image, 0, 0, null);
 		g.setColor(Color.YELLOW);
@@ -81,6 +80,7 @@ public class ImagePanel extends JPanel {
 	}
 	
 	public void convertToGrayscle() {
+		System.out.println("2");
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				//get value for 1 pixel
@@ -261,6 +261,28 @@ public class ImagePanel extends JPanel {
 	public Dimension getPreferredSize() {
 		Dimension size = new Dimension (width, height);
 		return size;
+	}
+
+	public void reset() {
+		for (int i = height; i > 0; i--) {
+			for (int x = 0; x < width; x++) {
+				for (int y = 0; y < height; y++) {
+					//get value for 1 pixel
+					int p = image.getRGB(x, y);
+					
+					int a = (p>>24) & 0xff;
+					int r = (p>>16) & 0xff;
+					int g = (p>>8) & 0xff;
+					int b = (p>>0) & 0xff;
+					
+					
+					//reset our pixel
+					p = (a<<24) | (r<<16) | (g<<8) | (b<<0);
+					image.setRGB(x, y, p);
+				}
+			}
+		}
+		
 	}
 
 }
